@@ -1,12 +1,12 @@
 function generateBarcode() {
-    let lastBarcode = localStorage.getItem("lastBarcode"); // Recupera o último código gerado
-    let baseNumber = lastBarcode ? Number(lastBarcode) + 1 : 789000000000; // Começa com prefixo do Brasil (789)
-    
+    let lastBarcode = localStorage.getItem("lastBarcode"); // Recupera o último gerado
+    let baseNumber = lastBarcode ? Number(lastBarcode) + 1 : 9999110000001; // Segue a sequência correta
+
     let checkDigit = calculateCheckDigit(baseNumber); // Calcula o dígito verificador
-    let barcode = baseNumber.toString().padStart(12, '0') + checkDigit; // Monta o código completo
+    let nextBarcode = baseNumber.toString() + checkDigit; // Monta o código completo
 
     localStorage.setItem("lastBarcode", baseNumber); // Salva o último código gerado
-    document.getElementById("barcode").textContent = barcode;
+    document.getElementById("barcode").textContent = nextBarcode;
 }
 
 function calculateCheckDigit(number) {
